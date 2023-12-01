@@ -370,28 +370,28 @@ public class OptifineSetup {
 
 		Path minecraftJar = getLaunchMinecraftJar();
 
-		if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
-			Path officialNames = minecraftJar.resolveSibling(String.format("minecraft-%s-client.jar", OptifineVersion.minecraftVersion));
+		// if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
+		// 	Path officialNames = minecraftJar.resolveSibling(String.format("minecraft-%s-client.jar", OptifineVersion.minecraftVersion));
 
-			if (Files.notExists(officialNames)) {
-				Path parent = minecraftJar.getParent().resolveSibling(String.format("minecraft-%s-client.jar", OptifineVersion.minecraftVersion));
+		// 	if (Files.notExists(officialNames)) {
+		// 		Path parent = minecraftJar.getParent().resolveSibling(String.format("minecraft-%s-client.jar", OptifineVersion.minecraftVersion));
 
-				if (Files.notExists(parent)) {
-					Path alternativeParent = parent.resolveSibling("minecraft-client.jar");
+		// 		if (Files.notExists(parent)) {
+		// 			Path alternativeParent = parent.resolveSibling("minecraft-client.jar");
 
-					if (Files.notExists(alternativeParent)) {
-						throw new AssertionError("Unable to find Minecraft dev jar! Tried " + officialNames + ", " + parent + " and " + alternativeParent
-													+ "\nPlease supply it explicitly with -Doptifabric.mc-jar");
-					}
+		// 			if (Files.notExists(alternativeParent)) {
+		// 				throw new AssertionError("Unable to find Minecraft dev jar! Tried " + officialNames + ", " + parent + " and " + alternativeParent
+		// 											+ "\nPlease supply it explicitly with -Doptifabric.mc-jar");
+		// 			}
 
-					parent = alternativeParent;
-				}
+		// 			parent = alternativeParent;
+		// 		}
 
-				officialNames = parent;
-			}
+		// 		officialNames = parent;
+		// 	}
 
-			minecraftJar = officialNames;
-		}
+		// 	minecraftJar = officialNames;
+		// }
 
 		return minecraftJar;
 	}
