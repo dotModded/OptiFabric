@@ -302,6 +302,11 @@ public class OptifineSetup {
 
 			String modelPart = nameToClass.get("net/minecraft/class_630").getName(from);
 			extraMethods.put(new Member(modelPart, "getChild", "(Ljava/lang/String;)L" + modelPart + ';'), "getChild_OF");
+
+			// From https://github.com/OpenCubicChunks/OptiFineDevTweaker/blob/b08131c441a0edd5a1f268bd73c4cb53c981428d/src/main/java/ofdev/modlauncher/OfDevRemapper.java#L25-L55
+		        // 1.20.1:
+			String modelBakery = nameToClass.get("net/minecraft/class_1088").getName(from);
+			extraMethods.put(new Member(modelBakery, "loadBlockModel", "(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/client/renderer/block/model/BlockModel;"), "loadBlockModel_OF");
 		}
 
 		//In prod
